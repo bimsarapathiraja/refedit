@@ -1,0 +1,88 @@
+### Notes
+
+I need your assist to generate more data for an image editing task.
+I need to create image generating prompt, editing instruction based on referring expressions and edit prompts as per the examples. Follow the format exactly. 
+The image prompts shouldn't be too long but should be bit complex.
+To generate referring expressions you need multiple instances of similar objects. 
+Write the editing prompt the same way the prompt is written with change from the editing instruction.
+
+Focus only on changing the color of an object from the given color to another color as the editing instruction. 
+
+Use diverse editing instructions. Some examples are as follows.
+	Let the color of the cat with collar be orange
+    The hair of the girl with red purse should be brown
+    Change the color of the laptop with a movie to black
+    The eyes of the man with umbrella should be blue
+    Change the color of the flowers in the green vase to pink
+
+To diversify your image prompts, you could try these strategies:
+
+Vary the Setting: Use different scenes, such as indoors, outdoors, urban, rural, etc. Instead of always having household objects, add scenarios involving landscapes, cityscapes, and natural environments.
+
+Incorporate Different Object Types: Move beyond basic items like bowls, cats, and benches. Incorporate uncommon items, like sculptures, musical instruments, sports gear, vehicles, or unique decor items.
+
+Use Different Object Relations: Experiment with prompts where the objects interact in non-linear layouts or even appear in complex groupings or layered arrangements.
+
+Add Activities or Actions: Instead of static setups, include subtle actions, like people reading, animals interacting, or toys moving. Small, simple actions add depth and more editing possibilities.
+
+Mix Scales and Sizes: Use items of various sizes, like large objects beside miniatures or oversized props with normal-sized ones.
+
+Incorporate Uncommon Features: Use color patterns, textures, or less common attributes, like weathered surfaces, reflective objects, or unusual color schemes.
+
+### The format should be as follows:
+
+---------------------------------
+**Prompt**
+[Image prompt]
+
+**Editing prompt**
+[editing_prompt1]
+[editing_prompt2]
+
+---------------------------------
+
+### Example
+
+Please refer to following examples carefully to get an idea of the details I look forward to. I have added comments but do not include them in your work.
+
+---------------------------------
+
+**Prompt**  - Note in here we edit the color of the jacket of each person and we can identify each of them by the item they are holding.
+A photo of two men in which the left man wearing a blue jacket is holding a bag and the other man wearing a blue jacket is holding a dog.
+
+**Editing prompt**  
+A photo of two men in which the left man wearing a green jacket is holding a bag and the other man wearing a blue jacket is holding a dog.
+A photo of two men in which the left man wearing a blue jacket is holding a bag and the other man wearing a brown jacket is holding a dog.
+
+---------------------------------
+
+**Prompt** - Note in here even though there are four people the the exact edited person can be found from the color of the trousers.
+There are four people at the dinner party. All are wearing black blazer and trousers. One person in the middle is wearing a black blazer and a blue trousers.
+
+**Editing prompt**
+There are four people at the dinner party. All are wearing black blazer and trousers. One person in the middle is wearing a blue blazer and a blue trousers.
+There are four people at the dinner party. All are wearing black blazer and trousers. One person in the middle is wearing a green blazer and a blue trousers.
+
+---------------------------------
+
+**Prompt** - Note in here we can single out the puppy biting the stick
+There are puppies playing outside. The puppy biting a stick is brown.
+
+**Editing prompt**
+There are puppies playing outside. The puppy biting a stick is black.
+There are puppies playing outside. The puppy biting a stick is white.
+
+---------------------------------
+
+**Prompt** - Note in here we identify the apples from the color of the bowl. 
+Three bowls are in a line on a cottage kitchen table. The left bowl is red and has red apples, the middle bowl is blue and has red apples, and the right bowl is red and empty.
+
+**Editing prompt**  
+Three bowls are in a line on a cottage kitchen table. The left bowl is red and has green apples, the middle bowl is blue and has red apples, and the right bowl is red and empty.
+Three bowls are in a line on a cottage kitchen table. The left bowl is red and has red apples, the middle bowl is blue and has green apples, and the right bowl is red and empty.
+
+---------------------------------
+
+### Final notes
+
+When we create the image we include hints to identify the object instance as shown above. Now since you have an idea what I'm looking for, create details for around 5 prompts directly following above examples. 

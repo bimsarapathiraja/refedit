@@ -1,0 +1,106 @@
+I need your assist extract some information from and image prompt and an editing prompt.
+Image prompt is the prompt that describes the image and the editing prompts are the prompts that describe the image after the editing.
+I need to create image generating prompt, editing objects, referring expressions from the prompt regarding editing objects, more descriptive referring expressions which are correct according to the written prompt and edit prompts as per the examples. Generate data only for one image. Follow the format exactly.
+Now I already created image generating prompt and the editing prompt so you only have to create other elements. 
+
+Start with the editing instruction. Check the difference between the prompt and the editing prompt to identify the editing instruction. But when you write it, it should be based on referring expressions where you pinpoint the object using relational attributes of other objects.
+Editing object is the most basic object that is edited. 
+Referring expression is the expression that refers to the object that is edited using some attributes of the object.
+Descriptive referring expression uses all the information from the prompt to describe the object.
+Descriptive referring expression for a single object is the singular form of the descriptive referring expression.
+
+The given samples only focus on changing color of an object.
+
+Use diverse editing instructions. Some examples are as follows.
+	Let the color of the cars near the stall be red
+    The hair of the girls with red purse should be brown
+    Could the leftmost balls be white?
+    Change the color of the nearest laptops to black
+    The eyes of the men with umbrella should be blue
+    Change the color of the flowers in the green vase to pink
+
+Do not include the initial state of the editing object in the editing instruction.
+    Change the color of the cars near the stall from green to red
+    Change the eyes of the men with umbrella from black to brown
+    Change the color of the flowers in the green vase from red to pink
+
+Input format:
+
+**Image prompt**
+[Image prompt]
+
+**Editing prompt**
+[editing_prompt1]
+[editing_prompt2]
+
+Output format:
+
+**Editing instruction**
+[editing_instruction1]
+[editing_instruction2]
+
+**Editing object**
+[editing_object1]
+
+**Referring expression**
+[referring_expression1]
+
+**Descriptive referring expression**
+[referring_expression1 more descriptively]
+
+Some examples are as follows. I have added some notes to help you understand the requirements better. Do not include them in the output.
+
+Example 1:
+Input:
+**Image prompt**
+A photo of two men in which the left man wearing a blue jacket is holding a bag and the other man wearing a blue jacket is holding a dog.
+
+**Editing prompt**
+A photo of two men in which the left man wearing a green jacket is holding a bag and the other man wearing a blue jacket is holding a dog.
+A photo of two men in which the left man wearing a blue jacket is holding a bag and the other man wearing a brown jacket is holding a dog.
+
+Output:
+**Editing instruction**
+Change the color of the jacket of the man holding the bag to green
+Could the color of the jacket of the man holding a bag be blue?
+
+**Editing object**
+Jacket
+
+**Referring expression**
+jacket of the man holding the bag
+jacket of the man holding a dog
+
+**Descriptive referring expression**
+blue jacket of the man holding a bag
+blue jacket of the man holding a dog
+
+Example 2:
+Input:
+**Image prompt**
+Three bowls are in a line on a cottage kitchen table. The left bowl is red and has red apples, the middle bowl is blue and has red apples, and the right bowl is red and empty.
+
+**Editing prompt**
+Three bowls are in a line on a cottage kitchen table. The left bowl is red and has green apples, the middle bowl is blue and has red apples, and the right bowl is red and empty.
+Three bowls are in a line on a cottage kitchen table. The left bowl is red and has red apples, the middle bowl is blue and has green apples, and the right bowl is red and empty.
+
+Output:
+**Editing instruction**
+Change the color of the apples in the red bowl to green
+Let the color of the apples in the blue bowl be green
+
+**Editing object**
+Apples
+
+**Referring expression**
+the apples in the red bowl
+the apples in the blue bowl
+
+**Descriptive referring expression** - We add every information
+the red apples in the red bowl
+the red apples in the blue bowl
+
+### Final notes
+
+Now since you have an idea what I'm looking for, create only details for the following input.
+

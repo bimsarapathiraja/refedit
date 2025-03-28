@@ -252,3 +252,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# python gen_masks_gdino.py --input_json change_color.json --output_dir change_color/

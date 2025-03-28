@@ -160,13 +160,6 @@ def main():
     with open(input_json, "r") as f:
         data = json.load(f)
 
-    input_json_name = input_json.split("/")[-1].split(".")[0] # change_color_4_updated
-    # remove the updated part
-    # input_json_name = input_json_name.split("_updated")[0] stage1
-    input_json_name = input_json_name.split("_updated")[0] # change_color_4
-    # output_dir = f"{output_dir}/{input_json_name}"
-    # os.makedirs(output_dir, exist_ok=True)
-
     # "1": {
     #     "prompt": "In the art gallery, there are three sculptures placed in a row. The leftmost sculpture is a marble bust, the middle one is a bronze abstract piece, and the rightmost is a wooden carving.",
     #     "edit_1": {
@@ -217,33 +210,11 @@ def main():
             img_save_dir_sub_pth = f"{img_save_dir_pth}/{ref_exp.replace(' ', '_')}"
             os.makedirs(img_save_dir_sub_pth, exist_ok=True)
 
-            # print(edit_obj, ref_exp)
-
-            # det_img_name = f"{ref_exp.replace(' ', '_')}_bbox.png"
-            # cropped_img_name = f"{ref_exp.replace(' ', '_')}_cropped.png"
-            # seg_img_name = f"{ref_exp.replace(' ', '_')}_seg.png"
-            # mask_img_name = f"{ref_exp.replace(' ', '_')}_mask.png"
-            # print(det_img_name)
-
             detected_boxes, logits, phrases = detect(image, text_prompt=ref_exp, model=groundingdino_model)
-            
-            # print(detected_boxes, logits, phrases)
-            # try:
-            #     final_box, max_conf = return_final_box(detected_boxes, logits, phrases, edit_obj)
-            #     # final_boxes.append(final_box)
-            # except:
-            #     print("Final bounding box error:", img_dir_pth)
-            #     continue
-
-
-            # print(final_box, max_conf)
 
             # sort the boxes based on the confidence score
             sorted_indices = torch.argsort(logits, descending=True)
             sorted_boxes = detected_boxes[sorted_indices]
-
-            # save each bbox, cropped image, segmented image, and mask in the directory from 1 to n
-            # print(f"Number of boxes detected: {len(sorted_boxes)}, {detected_boxes.shape}")
 
             for i, box in enumerate(sorted_boxes):
                 box_id_pth = f"{img_save_dir_sub_pth}/{i+1}"
@@ -266,8 +237,7 @@ def main():
                 mask = segmented_frame_masks[0][0].cpu().numpy()
                 Image.fromarray(mask).save(f"{box_id_pth}/mask.png")
 
-            # print("\n\n")
-        # break
-
 if __name__ == "__main__":
     main()
+
+# python gen_masks_gdino_multi.py --input_json change_color.json --output_dir change_color

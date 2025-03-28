@@ -1,0 +1,3 @@
+[submodule "data/mask_generation/Grounded-Segment-Anything"]
+	path = data/mask_generation/Grounded-Segment-Anything
+	url = https://github.com/IDEA-Research/Grounded-Segment-Anything.git

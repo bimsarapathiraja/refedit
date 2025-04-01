@@ -23,8 +23,70 @@ We also provide the finetuned models on InstructPix2Pix and UltraEdit-freeform -
 
 # Setup
 
-```
-pip install -r requirements
+To download the necessary GitHub repositories and copy the new files to the correct locations, run the following command:
 
-cd diffusers && pip install -e .
+```
+bash setup.sh    
+```
+
+# Dataset Access
+
+The training set and the RefEdit-Bench are publicly available on [Huggingface](https://huggingface.co/). The training dataset covers a synthetically generated ~20K editing triplets on changing color, changing object, adding an object, removing an object and changing texture. [MagicBrush](https://github.com/OSU-NLP-Group/MagicBrush) was combined with our synthetic dataset for final training. RefEdit-Bench is a benchmark for evaluating the performance of image editing models on referring expressions. It consists of Easy and Hard mode where each category contains 100 images. 
+
+# Model Access
+
+Fine-tuned checkpoints RefEdit-SD1.5 (finetuned on [InstructPix2Pix](https://github.com/timothybrooks/instruct-pix2pix/tree/main)) and RefEdit-SD3 (finetuned on [UltraEdit-freeform](https://github.com/pkunlp-icler/UltraEdit/tree/main?tab=readme-ov-file)) are available on [Huggingface](https://huggingface.co/). 
+
+## 1. Environment Setup
+Follow the instructions at `training/RefEdit-SD3/UltraEdit` to set up the environment for training and inference.
+
+## 2. Inference
+To run inference, use the following command:
+
+```python
+# For Editing with RefEdit-SD3
+import torch
+from diffusers import StableDiffusion3InstructPix2PixPipeline
+from diffusers.utils import load_image
+import requests
+import PIL.Image
+import PIL.ImageOps
+
+pipe = StableDiffusion3InstructPix2PixPipeline.from_pretrained("RefEdit/RefEdit-SD3", torch_dtype=torch.float16)
+pipe = pipe.to("cuda")
+prompt = "Add a flower bunch to the person with a red jacket"
+img = load_image("RefEdit/imgs/person_with_red_jacket.jpg").resize((512, 512))
+
+image = pipe(
+    prompt,
+    image=img,
+    mask_img=None,
+    num_inference_steps=50,
+    image_guidance_scale=1.5,
+    guidance_scale=7.5,
+).images[0]
+
+image.save("RefEdit/imgs/edited_image.png")
+```
+
+## 3. Training
+
+To train the RefEdit-SD3 model, use the following command:
+
+```
+cd training/RefEdit-SD3/UltraEdit
+bash scripts/run_sft_512_sd3_stage1_refedit_wo_mask.sh
+```
+
+# Citation
+
+If you use this code or the dataset in your research, please cite our paper:
+
+```bibtex
+@article{pathiraja2023refedit,
+  title={RefEdit: A Benchmark and Method for Improving Instruction-based Image Editing Model for Referring Expression},
+  author={Pathiraja, Bimsara and Patel, Maitreya and Singh, Shivam and Yang, Yezhou and Baral, Chitta},
+  journal={arXiv preprint arXiv:2309.12345},
+  year={2025}
+}
 ```

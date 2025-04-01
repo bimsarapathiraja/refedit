@@ -1,6 +1,6 @@
 # RefEdit: A Benchmark and Method for Improving Instruction-based Image Editing Model for Referring Expression
 
-[Bimsara Pathiraja](https://scholar.google.es/citations?hl=en&user=7ViSGnIAAAAJ), [Malitha Gunawardhana](https://scholar.google.com/citations?user=z--mlKgAAAAJ&hl=en&oi=ao), [Shivam Singh](https://scholar.google.com/citations?user=z--mlKgAAAAJ&hl=en&oi=ao), [Yezhou Yang](https://scholar.google.com/citations?user=k2suuZgAAAAJ&hl=en), [Chitta Baral](https://scholar.google.com/citations?user=9Yd716IAAAAJ&hl=en)
+[Bimsara Pathiraja](https://scholar.google.es/citations?hl=en&user=7ViSGnIAAAAJ), [Maitreya Patel](https://scholar.google.com/citations?user=z--mlKgAAAAJ&hl=en&oi=ao), [Shivam Singh](https://scholar.google.com/citations?user=z--mlKgAAAAJ&hl=en&oi=ao), [Yezhou Yang](https://scholar.google.com/citations?user=k2suuZgAAAAJ&hl=en), [Chitta Baral](https://scholar.google.com/citations?user=9Yd716IAAAAJ&hl=en)
 
 [![paper](https://img.shields.io/badge/arXiv-Paper-42FF33)]() 
 [![Project Page](https://img.shields.io/badge/Project-Page-blue)]() 

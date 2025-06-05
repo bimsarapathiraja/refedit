@@ -1,9 +1,9 @@
 # RefEdit: A Benchmark and Method for Improving Instruction-based Image Editing Model for Referring Expression
 
-[Bimsara Pathiraja](https://scholar.google.es/citations?hl=en&user=7ViSGnIAAAAJ), [Maitreya Patel](https://scholar.google.com/citations?user=z--mlKgAAAAJ&hl=en&oi=ao), [Shivam Singh](https://scholar.google.com/citations?user=z--mlKgAAAAJ&hl=en&oi=ao), [Yezhou Yang](https://scholar.google.com/citations?user=k2suuZgAAAAJ&hl=en), [Chitta Baral](https://scholar.google.com/citations?user=9Yd716IAAAAJ&hl=en)
+[Bimsara Pathiraja*](https://scholar.google.es/citations?hl=en&user=7ViSGnIAAAAJ), [Maitreya Patel*](https://maitreyapatel.com), [Shivam Singh](https://scholar.google.com/citations?user=z--mlKgAAAAJ&hl=en&oi=ao), [Yezhou Yang](https://scholar.google.com/citations?user=k2suuZgAAAAJ&hl=en), [Chitta Baral](https://scholar.google.com/citations?user=9Yd716IAAAAJ&hl=en)
 
-[![paper](https://img.shields.io/badge/arXiv-Paper-42FF33)]() 
-[![Project Page](https://img.shields.io/badge/Project-Page-blue)]() 
+[![paper](https://img.shields.io/badge/arXiv-Paper-42FF33)](https://arxiv.org/abs/2506.03448) 
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://refedit.vercel.app/) 
 
 > **Abstract:** *Despite recent advances in inversion and instruction-based image editing, existing approaches primarily excel at editing single, prominent objects but significantly struggle when applied to complex scenes containing multiple entities. To quantify this gap, we first introduce RefEdit-Bench, a rigorous real-world benchmark rooted in RefCOCO, where even baselines trained on millions of samples perform poorly. To overcome this limitation, we introduce RefEdit -- an instruction-based editing model trained on our scalable synthetic data generation pipeline. Our RefEdit, trained on only 20,000 editing triplets, outperforms the Flux/SD3 model-based baselines trained on millions of data. Extensive evaluations across various benchmarks demonstrate that our model not only excels in referring expression tasks but also enhances performance on traditional benchmarks, achieving state-of-the-art results comparable to closed-source methods. We will release our code, data, and checkpoints.*
 
@@ -31,11 +31,11 @@ bash setup.sh
 
 # Dataset Access
 
-The training set and the RefEdit-Bench are publicly available on [Huggingface](https://huggingface.co/). The training dataset covers a synthetically generated ~20K editing triplets on changing color, changing object, adding an object, removing an object and changing texture. [MagicBrush](https://github.com/OSU-NLP-Group/MagicBrush) was combined with our synthetic dataset for final training. RefEdit-Bench is a benchmark for evaluating the performance of image editing models on referring expressions. It consists of Easy and Hard mode where each category contains 100 images. 
+The training set and the RefEdit-Bench are publicly available on [Huggingface](https://huggingface.co/datasets/bpathir1/RefEdit/). The training dataset covers a synthetically generated ~20K editing triplets on changing color, changing object, adding an object, removing an object and changing texture. [MagicBrush](https://github.com/OSU-NLP-Group/MagicBrush) was combined with our synthetic dataset for final training. RefEdit-Bench is a benchmark for evaluating the performance of image editing models on referring expressions. It consists of Easy and Hard mode where each category contains 100 images. 
 
 # Model Access
 
-Fine-tuned checkpoints RefEdit-SD1.5 (finetuned on [InstructPix2Pix](https://github.com/timothybrooks/instruct-pix2pix/tree/main)) and RefEdit-SD3 (finetuned on [UltraEdit-freeform](https://github.com/pkunlp-icler/UltraEdit/tree/main?tab=readme-ov-file)) are available on [Huggingface](https://huggingface.co/). 
+Fine-tuned checkpoints RefEdit-SD1.5 (finetuned on [InstructPix2Pix](https://github.com/timothybrooks/instruct-pix2pix/tree/main)) and RefEdit-SD3 (finetuned on [UltraEdit-freeform](https://github.com/pkunlp-icler/UltraEdit/tree/main?tab=readme-ov-file)) are available on [Huggingface](https://huggingface.co/bpathir1/RefEdit-SD3/). 
 
 ## 1. Environment Setup
 Follow the instructions at `training/RefEdit-SD3/UltraEdit` to set up the environment for training and inference.
@@ -52,7 +52,7 @@ import requests
 import PIL.Image
 import PIL.ImageOps
 
-pipe = StableDiffusion3InstructPix2PixPipeline.from_pretrained("RefEdit/RefEdit-SD3", torch_dtype=torch.float16)
+pipe = StableDiffusion3InstructPix2PixPipeline.from_pretrained("bpathir1/RefEdit-SD3", torch_dtype=torch.float16)
 pipe = pipe.to("cuda")
 prompt = "Add a flower bunch to the person with a red jacket"
 img = load_image("RefEdit/imgs/person_with_red_jacket.jpg").resize((512, 512))
@@ -83,10 +83,10 @@ bash scripts/run_sft_512_sd3_stage1_refedit_wo_mask.sh
 If you use this code or the dataset in your research, please cite our paper:
 
 ```bibtex
-@article{pathiraja2023refedit,
-  title={RefEdit: A Benchmark and Method for Improving Instruction-based Image Editing Model for Referring Expression},
-  author={Pathiraja, Bimsara and Patel, Maitreya and Singh, Shivam and Yang, Yezhou and Baral, Chitta},
-  journal={arXiv preprint arXiv:2309.12345},
-  year={2025}
+@article{pathiraja2025refedit,
+    title={RefEdit: A Benchmark and Method for Improving Instruction-based Image Editing Model for Referring Expression},
+    author={Pathiraja, Bimsara and Patel, Maitreya and Singh, Shivam and Yang, Yezhou and Baral, Chitta},
+    journal={arXiv preprint arXiv:2506.03448},
+    year={2025}
 }
 ```

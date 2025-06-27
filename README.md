@@ -1,4 +1,4 @@
-# RefEdit: A Benchmark and Method for Improving Instruction-based Image Editing Model for Referring Expression
+# [ICCV 2025] RefEdit: A Benchmark and Method for Improving Instruction-based Image Editing Model for Referring Expression
 
 [Bimsara Pathiraja*](https://scholar.google.es/citations?hl=en&user=7ViSGnIAAAAJ), [Maitreya Patel*](https://maitreyapatel.com), [Shivam Singh](https://scholar.google.com/citations?user=z--mlKgAAAAJ&hl=en&oi=ao), [Yezhou Yang](https://scholar.google.com/citations?user=k2suuZgAAAAJ&hl=en), [Chitta Baral](https://scholar.google.com/citations?user=9Yd716IAAAAJ&hl=en)
 
